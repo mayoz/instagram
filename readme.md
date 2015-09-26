@@ -4,35 +4,44 @@
 
 To get started with Instagram, add to your `composer.json` file as a dependency:
 
+```json
     composer require mayoz/instagram
+```
 
 ### Configuration
 
 After installing the Instagram library, register the `Mayoz\Instagram\InstagramServiceProvider` in your `config/app.php` configuration file:
 
+```php
     'providers' => [
         // Other service providers...
 
         Mayoz\Instagram\InstagramServiceProvider::class,
     ],
+```
 
 Also, add the `Instagram` facade to the `aliases` array in your `app` configuration file:
 
+```php
     'Instagram' => Mayoz\Instagram\Facades\Instagram::class,
+```
 
 You will also need to add credentials for the OAuth services your application utilizes. These credentials should be placed in your `config/services.php` configuration file with `instagram` key. For example:
 
+```php
     'instagram' => [
         'client_id'     => env('INSTAGRAM_KEY'),
         'client_secret' => env('INSTAGRAM_SECRET'),
         'redirect'      => env('INSTAGRAM_REDIRECT_URI'),
     ],
+```
 
 ### Basic Usage
 
 Next, you are ready to use. Please see the following examples.
 
-    <?php
+```php
+<?php
 
     namespace App\Http\Controllers;
 
@@ -48,10 +57,9 @@ Next, you are ready to use. Please see the following examples.
          */
         public function getPopularMedia()
         {
-            return Instagram::getPopularMedia();
+            return (array) Instagram::getPopularMedia();
         }
     }
-
 ```
 
 ## Documentation
