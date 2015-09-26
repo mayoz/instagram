@@ -1,0 +1,24 @@
+{
+    "name": "mayoz/instagram",
+    "type": "library",
+    "description": "Instagram SDK bridge for Laravel 5",
+    "keywords": ["laravel", "instagram", "api"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sercan Çakır",
+            "email": "srcnckr@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.9",
+        "illuminate/contracts": "~5.0",
+        "illuminate/support": "~5.0",
+        "cosenary/instagram": "~2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Mayoz\\Instagram\\": "src/"
+        }
+    }
+}
