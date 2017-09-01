@@ -73,14 +73,19 @@ class InstagramManager extends Manager
     /**
      * Get the User instance for the authenticated user.
      *
+     * @param string $code A custom code from oauth request
+     *
      * @return \Mayoz\Instagram\User
      *
      * @throws \InvalidArgumentException
      */
-    public function me()
+    public function me(string $code = '')
     {
         $driver = $this->driver();
-        $code   = $this->app['request']->get('code');
+
+        if ($code === '') {
+            $code = $this->app['request']->get('code');
+        }
 
         try {
             if ($code) {
@@ -111,7 +116,7 @@ class InstagramManager extends Manager
      * @param  string  $token
      * @return \Mayoz\Instagram\User
      */
-    protected function mapUserToObject(array $user, $token)
+    public function mapUserToObject(array $user, $token)
     {
         return (new User())->map([
             'id'       => $user['id'],
@@ -119,6 +124,8 @@ class InstagramManager extends Manager
             'name'     => $user['full_name'],
             'email'    => null,
             'avatar'   => $user['profile_picture'],
+            'bio'      => isset($user['bio']) ? $user['bio'] : null,
+            'website'  => isset($user['website']) ? $user['website'] : null,
             'token'    => $token
         ]);
     }
