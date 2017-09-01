@@ -59,6 +59,20 @@ class User implements ArrayAccess
     public $avatar;
 
     /**
+     * The user's biography
+     *
+     * @var string
+     */
+    public $bio;
+
+    /**
+     * The user's website URL
+     *
+     * @var string
+     */
+    public $website;
+
+    /**
      * The user's access token.
      *
      * @var string
@@ -113,6 +127,26 @@ class User implements ArrayAccess
     public function getAvatar()
     {
         return $this->avatar;
+    }
+
+    /**
+     * Get the avatar URL for the user.
+     *
+     * @return string
+     */
+    public function getBio()
+    {
+        return $this->bio;
+    }
+
+    /**
+     * Get the avatar URL for the user.
+     *
+     * @return string
+     */
+    public function getWebsite()
+    {
+        return $this->website;
     }
 
     /**
