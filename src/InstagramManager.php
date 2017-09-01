@@ -119,6 +119,8 @@ class InstagramManager extends Manager
             'name'     => $user['full_name'],
             'email'    => null,
             'avatar'   => $user['profile_picture'],
+            'bio'      => isset($user['bio']) ? $user['bio'] : null,
+            'website'  => isset($user['website']) ? $user['website'] : null,
             'token'    => $token
         ]);
     }
