@@ -73,14 +73,19 @@ class InstagramManager extends Manager
     /**
      * Get the User instance for the authenticated user.
      *
+     * @param string $code A custom code from oauth request
+     *
      * @return \Mayoz\Instagram\User
      *
      * @throws \InvalidArgumentException
      */
-    public function me()
+    public function me(string $code = '')
     {
         $driver = $this->driver();
-        $code   = $this->app['request']->get('code');
+
+        if ($code === '') {
+            $code = $this->app['request']->get('code');
+        }
 
         try {
             if ($code) {
